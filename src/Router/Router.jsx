@@ -3,6 +3,8 @@ import Root from "../Layout/Root/Root";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import SignUP from "../Pages/SignUp/SignUP";
+import Dashboard from "../Layout/Dashboard/Dashboard";
+import AddTask from "../Pages/Dashboard/AddTask/AddTask";
 
 const Router = createBrowserRouter([
     {
@@ -22,6 +24,16 @@ const Router = createBrowserRouter([
                 element: <SignUP></SignUP>
             },
         ]
+    },
+    {
+     path:'/dashboard',
+     element:<Dashboard></Dashboard>,
+     children:[
+        {
+            path:'/dashboard/addTask',
+            element:<AddTask></AddTask>
+        }
+     ]
     }
 ])
 
