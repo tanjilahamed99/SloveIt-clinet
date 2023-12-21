@@ -1,12 +1,60 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
 
+
+    const { user, logoutUser } = useContext(AuthContext)
+
     const ulLinks = <>
-        <li><a>Home</a></li>
-        <li><a>ABout</a></li>
-        <li><a>HEllo</a></li>
+        <li>
+            <NavLink
+                to="/"
+                className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "" : ""
+                }
+            >
+                Home
+            </NavLink>
+        </li>
+        <li>
+            <NavLink
+                to="/"
+                className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "" : ""
+                }
+            >
+                Home
+            </NavLink>
+        </li>
+        <li>
+            <NavLink
+                to="/"
+                className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "" : ""
+                }
+            >
+                Home
+            </NavLink>
+        </li>
     </>
+
+
+    const handleLogOut = () => {
+        logoutUser()
+            .then(() => {
+                Swal.fire(
+                    'Good job!',
+                    'Log out Successful',
+                    'success'
+                )
+            })
+            .catch(() => {
+
+            })
+    }
 
     return (
         <div className="navbar bg-slate-50 border-b-2 py-4">
@@ -31,26 +79,28 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to={'/login'}>
-                    <a className="btn btn-outline">Login</a>
-                </Link>
-                {/* <div className="dropdown dropdown-end">
-                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                        <div className="w-10 rounded-full">
-                            <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                {
+                    user ? <div className="dropdown dropdown-end">
+                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                            <div className="w-10 rounded-full">
+                                <img  src={user?.photoURL} />
+                            </div>
                         </div>
-                    </div>
-                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                        <li>
-                            <a className="justify-between">
-                                Profile
-                                <span className="badge">New</span>
-                            </a>
-                        </li>
-                        <li><a>Settings</a></li>
-                        <li><a>Logout</a></li>
-                    </ul>
-                </div> */}
+                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                            <li>
+                                <a className="justify-between">
+                                    Profile
+                                </a>
+                            </li>
+                            <li><a>Settings</a></li>
+                            <li onClick={handleLogOut}><a>Logout</a></li>
+                        </ul>
+                    </div> : <Link to={'/login'}>
+                        <a className="btn btn-outline">Login</a>
+                    </Link>
+                }
+
+
             </div>
         </div>
     );
