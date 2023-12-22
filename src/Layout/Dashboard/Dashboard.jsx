@@ -1,8 +1,17 @@
+import { useContext } from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Dashboard = () => {
+    const { user } = useContext(AuthContext)
 
     const ulLinks = <>
+        <div className="avatar">
+            <div className="w-24 rounded-full">
+                <img src={user?.photoURL} />
+            </div>
+        </div>
+        <h2 className="text-sm font-bold">{user.email}</h2>
         <li>
             <NavLink
                 to="/dashboard/addTask"

@@ -102,6 +102,9 @@ const Task = () => {
                                         </div>
                                         <button onClick={() => handleMakeOngoing(i._id)} className="btn mt-2 btn-outline btn-sm text-green-600">Ongoing</button>
                                         <button onClick={() => handleDelete(i._id)} className="btn mt-2 btn-outline btn-sm mx-3 text-red-500">Delete</button>
+                                        <Link to={`/dashboard/updateTask/${i._id}`}>
+                                            <button className="btn mt-2 btn-outline btn-sm text-blue-500">Update</button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>)
