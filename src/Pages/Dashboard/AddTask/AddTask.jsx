@@ -1,14 +1,32 @@
 import { useForm } from "react-hook-form";
 import SectionTittle from "../../../Shared/SectionTittle";
+import useAXiosPublic from "../../../Hooks/AxiosPublic/useAXiosPublic";
+import Swal from "sweetalert2";
 
 const AddTask = () => {
-    const { register, handleSubmit } = useForm()
+    const { register, handleSubmit,reset } = useForm()
+    const axiosPublic = useAXiosPublic()
 
     const onSubmit = (data) => {
-     
-        
-     
-        console.log(data)
+        const newTask = {
+            tittle: data.tittle,
+            desc: data.desc,
+            deadline: data.deadline,
+            priority: data.priority
+        }
+
+        axiosPublic.post('/task', newTask)
+            .then(res => {
+                if (res.data.acknowledged) {
+                    Swal.fire({
+                        icon: "success",
+                        title: "created a new task",
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    reset()
+                }
+            })
     }
 
 
@@ -18,15 +36,15 @@ const AddTask = () => {
             <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-2 gap-10">
                 <div>
                     <h2 className="text-sm font-bold mb-2">Tittle</h2>
-                    <input type="text" {...register("tittle")} placeholder="Type here" className="input input-bordered w-full" />
+                    <input required type="text" {...register("tittle")} placeholder="Type here" className="input input-bordered w-full" />
                 </div>
                 <div>
                     <h2 className="text-sm font-bold mb-2">Deadline</h2>
-                    <input {...register("deadline")} type="date" placeholder="Type here" className="input input-bordered w-full" />
+                    <input required {...register("deadline")} type="date" placeholder="Type here" className="input input-bordered w-full" />
                 </div>
                 <div>
                     <h2 className="text-sm font-bold mb-2">Priority</h2>
-                    <select {...register("priority")} className="select select-bordered w-full">
+                    <select required {...register("priority")} className="select select-bordered w-full">
                         <option disabled selected>Select</option>
                         <option>low</option>
                         <option>Moderate</option>
@@ -35,7 +53,7 @@ const AddTask = () => {
                 </div>
                 <div className="">
                     <h2 className="text-sm font-bold mb-2">Description</h2>
-                    <textarea {...register("desc")} className="textarea textarea-bordered w-full" placeholder="Bio"></textarea>
+                    <textarea required {...register("desc")} className="textarea textarea-bordered w-full" placeholder="Bio"></textarea>
                 </div>
                 <button type="submit" className="btn btn-outline col-span-2">Create Task</button>
             </form>
