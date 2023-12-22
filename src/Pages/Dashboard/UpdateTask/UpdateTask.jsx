@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useAXiosPublic from "../../../Hooks/AxiosPublic/useAXiosPublic";
 import { useEffect, useState } from "react";
 import SectionTittle from "../../../Shared/SectionTittle";
@@ -8,35 +8,13 @@ const UpdateTask = () => {
     const { id } = useParams()
     const axiosPublic = useAXiosPublic()
     const [task, setTask] = useState()
+    const navigate = useNavigate()
 
     useEffect(() => {
         axiosPublic.get(`/getTask/${id}`)
             .then(res => setTask(res.data))
     }, [id, axiosPublic])
 
-
-    const onSubmit = (data) => {
-        const newTask = {
-            tittle: data.tittle,
-            desc: data.desc,
-            deadline: data.deadline,
-            priority: data.priority,
-            ongoing: false,
-            completed: false,
-        }
-
-        axiosPublic.post('/task', newTask)
-            .then(res => {
-                if (res.data.acknowledged) {
-                    Swal.fire({
-                        icon: "success",
-                        title: "created a new task",
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                }
-            })
-    }
 
     const handleUpdate = e => {
         e.preventDefault()
@@ -46,6 +24,21 @@ const UpdateTask = () => {
         const priority = form.priority.value
         const desc = form.desc.value
 
+        const updateTask = { tittle, deadline, priority, desc }
+
+        axiosPublic.patch(`/updateTask/${task._id}`, updateTask)
+            .then(res => {
+                console.log(res.data)
+                if (res.data.modifiedCount > 0) {
+                    Swal.fire({
+                        icon: "success",
+                        title: "created a new task",
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    navigate('/dashboard/task')
+                }
+            })
     }
 
 
@@ -60,7 +53,7 @@ const UpdateTask = () => {
                 </div>
                 <div>
                     <h2 className="text-sm font-bold mb-2">Deadline</h2>
-                    <input  required name="deadline" type="date" placeholder="Type here" className="input input-bordered w-full" />
+                    <input required name="deadline" type="date" placeholder="Type here" className="input input-bordered w-full" />
                 </div>
                 <div>
                     <h2 className="text-sm font-bold mb-2">Priority</h2>
@@ -75,7 +68,7 @@ const UpdateTask = () => {
                     <h2 className="text-sm font-bold mb-2">Description</h2>
                     <textarea required defaultValue={task?.desc} name="desc" className="textarea textarea-bordered w-full" placeholder="Bio"></textarea>
                 </div>
-                <button type="submit" className="btn btn-outline col-span-2">Create Task</button>
+                <button type="submit" className="btn btn-outline col-span-2">Update Task</button>
             </form>
         </div>
     );
