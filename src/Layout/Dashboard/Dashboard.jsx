@@ -40,15 +40,15 @@ const Dashboard = () => {
 
 
     return (
-        <div className="flex container mx-auto gap-10">
-            <div className="bg-slate-100 h-[100vh] w-[20%] py-5 ">
+        <div className="flex flex-col md:flex-row  container mx-auto gap-10">
+            <div className="bg-slate-100 md:h-[100vh] lg::w-[20%] md:w-[30%] py-5 ">
                 <ul className="text-center space-y-2">
                     {
                         ulLinks
                     }
                 </ul>
             </div>
-            <div className="w-[70%]">
+            <div className="lg:w-[80%] md:w-[70%]">
                 <Outlet></Outlet>
             </div>
         </div>

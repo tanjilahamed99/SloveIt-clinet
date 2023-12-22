@@ -15,14 +15,14 @@ const Used = () => {
                 <div className="mx-auto  shadow-2xl p-5">
                     <img className="w-[200px] h-[200px]" src="https://i.ibb.co/Wp6GLH1/bruce-mars-8-YG31-Xn4d-Sw-unsplash.jpg" alt="" />
                     <div>
-                        <h2 className="text-xl font-medium">Aren Yanger</h2>
-                        <p className="text-sm font-bold">senior software developer</p>
+                        <h2 className="text-xl font-medium">Captain Levi</h2>
+                        <p className="text-sm font-bold">Content creator</p>
                     </div>
                 </div>
                 <div className="mx-auto shadow-2xl p-5">
                     <img className="w-[200px] h-[200px]" src="https://i.ibb.co/9yxnvmG/joshua-rawson-harris-P2x-O3-EIk15-E-unsplash.jpg" alt="" />
                     <div>
-                        <h2 className="text-xl font-medium">Rose</h2>
+                        <h2 className="text-xl font-medium">Rose Nobara</h2>
                         <p className="text-sm font-bold">junior website developer</p>
                     </div>
                 </div>

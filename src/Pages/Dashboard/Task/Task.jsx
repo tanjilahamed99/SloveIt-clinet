@@ -75,11 +75,11 @@ const Task = () => {
     return (
         <div className="pb-20">
             <SectionTittle subTittle={"Task"} tittle={"All Task"}></SectionTittle>
-            <div className="grid  gap-10 ">
+            <div className="grid  gap-10 p-2">
                 <Link to={'/dashboard/addTask'}>
-                    <button className="text-left btn btn-accent w-fit text-white">Add new task</button>
+                    <button className="text-left btn btn-sm btn-accent w-fit text-white">Add new task</button>
                 </Link>
-                <div className="border-2 ">
+                <div className="border-2">
                     <h2 className="bg-slate-100 text-2xl text-center">To do</h2>
 
                     <div className="p-3 bg-slate-50 space-y-3">
@@ -93,18 +93,20 @@ const Task = () => {
                                         }
                                     </div>
                                     <div className="collapse-content">
-                                        <div className="flex justify-between">
+                                        <div className="flex flex-col md:flex-row md:justify-between">
                                             <div>
-                                                <h2 className="font-medium text-xl">Priority: {i.priority}</h2>
+                                                <h2 className="font-medium text-xl">Priority: <span className="text-red-500">{i.priority}</span></h2>
                                                 <h2 className=" text-xl">Description: {i.desc}</h2>
                                             </div>
                                             <h2 className="text-sm font-medium">Deadline :{i.deadline}</h2>
                                         </div>
-                                        <button onClick={() => handleMakeOngoing(i._id)} className="btn mt-2 btn-outline btn-sm text-green-600">Ongoing</button>
-                                        <button onClick={() => handleDelete(i._id)} className="btn mt-2 btn-outline btn-sm mx-3 text-red-500">Delete</button>
-                                        <Link to={`/dashboard/updateTask/${i._id}`}>
-                                            <button className="btn mt-2 btn-outline btn-sm text-blue-500">Update</button>
-                                        </Link>
+                                        <div className="flex md:flex-row flex-col gap-2 mt-3">
+                                            <button onClick={() => handleMakeOngoing(i._id)} className="btn btn-outline btn-sm text-green-600">Ongoing</button>
+                                            <button onClick={() => handleDelete(i._id)} className="btn btn-outline btn-sm text-red-500">Delete</button>
+                                            <Link className="w-full" to={`/dashboard/updateTask/${i._id}`}>
+                                                <button className="btn w-full md:w-fit btn-outline btn-sm text-blue-500">Update</button>
+                                            </Link>
+                                        </div>
                                     </div>
                                 </div>
                             </div>)
@@ -124,14 +126,14 @@ const Task = () => {
                                         }
                                     </div>
                                     <div className="collapse-content">
-                                        <div className="flex justify-between">
+                                        <div className="flex flex-col md:flex-row justify-between">
                                             <div>
-                                                <h2 className="font-medium text-xl">Priority: {i.priority}</h2>
+                                                <h2 className="font-medium text-xl">Priority: <span className="text-red-500">{i.priority}</span></h2>
                                                 <h2 className=" text-xl">Description: {i.desc}</h2>
                                             </div>
                                             <h2 className="text-sm font-medium">Deadline :{i.deadline}</h2>
                                         </div>
-                                        <button onClick={() => handleMakeComplete(i._id)} className="btn mt-2 btn-outline btn-sm">Complete</button>
+                                        <button onClick={() => handleMakeComplete(i._id)} className="btn mt-2 btn-outline btn-sm text-green-500">Complete</button>
                                     </div>
                                 </div>
                             </div>)
@@ -151,9 +153,9 @@ const Task = () => {
                                         }
                                     </div>
                                     <div className="collapse-content">
-                                        <div className="flex justify-between">
+                                        <div className="flex md:flex-row flex-col justify-between">
                                             <div>
-                                                <h2 className="font-medium text-xl">Priority: {i.priority}</h2>
+                                                <h2 className="font-medium text-xl">Priority: <span className="text-green-500">{i.priority}</span></h2>
                                                 <h2 className=" text-xl">Description: {i.desc}</h2>
                                             </div>
                                             <h2 className="text-sm font-medium">Deadline :{i.deadline}</h2>
@@ -164,10 +166,6 @@ const Task = () => {
                         }
                     </div>
                 </div>
-
-                {/* {
-                    task.map(i => <DisplayTask key={i._id} task={i}></DisplayTask>)
-                } */}
             </div>
         </div>
     );

@@ -40,15 +40,15 @@ const AddTask = () => {
         <div>
             <SectionTittle subTittle={"ADD"} tittle={"Add New Task"}></SectionTittle>
             <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-2 gap-10">
-                <div>
+                <div className="col-span-2 lg:col-span-1 w-[90%] mx-auto"> 
                     <h2 className="text-sm font-bold mb-2">Tittle</h2>
                     <input required type="text" {...register("tittle")} placeholder="Type here" className="input input-bordered w-full" />
                 </div>
-                <div>
+                <div className="col-span-2 lg:col-span-1 w-[90%] mx-auto">
                     <h2 className="text-sm font-bold mb-2">Deadline</h2>
                     <input required {...register("deadline")} type="date" placeholder="Type here" className="input input-bordered w-full" />
                 </div>
-                <div>
+                <div className="col-span-2 lg:col-span-1 w-[90%] mx-auto">
                     <h2 className="text-sm font-bold mb-2">Priority</h2>
                     <select required {...register("priority")} className="select select-bordered w-full">
                         <option disabled selected>Select</option>
@@ -57,11 +57,11 @@ const AddTask = () => {
                         <option>High</option>
                     </select>
                 </div>
-                <div className="">
+                <div className="col-span-2 lg:col-span-1 w-[90%] mx-auto">
                     <h2 className="text-sm font-bold mb-2">Description</h2>
                     <textarea required {...register("desc")} className="textarea textarea-bordered w-full" placeholder="Bio"></textarea>
                 </div>
-                <button type="submit" className="btn btn-outline col-span-2">Create Task</button>
+                <button type="submit" className="btn btn-outline col-span-2 mx-auto w-[90%]">Create Task</button>
             </form>
         </div>
     );
