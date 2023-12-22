@@ -2,10 +2,13 @@ import { useForm } from "react-hook-form";
 import SectionTittle from "../../../Shared/SectionTittle";
 import useAXiosPublic from "../../../Hooks/AxiosPublic/useAXiosPublic";
 import Swal from "sweetalert2";
+import { useContext } from "react";
+import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
 const AddTask = () => {
     const { register, handleSubmit, reset } = useForm()
     const axiosPublic = useAXiosPublic()
+    const { user } = useContext(AuthContext)
 
     const onSubmit = (data) => {
         const newTask = {
@@ -14,7 +17,8 @@ const AddTask = () => {
             deadline: data.deadline,
             priority: data.priority,
             ongoing: false,
-            completed: false
+            completed: false,
+            email: user?.email
         }
 
         axiosPublic.post('/task', newTask)
