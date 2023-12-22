@@ -1,5 +1,5 @@
 
-import { FaEyeSlash, FaEye, FaGooglePlusG } from "react-icons/fa";
+import { FaEyeSlash, FaEye, FaGooglePlusG, FaGithub } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useContext, useState } from "react";
@@ -11,7 +11,7 @@ const Login = () => {
     const [see, setSee] = useState(true)
     const navigate = useNavigate()
     const location = useLocation()
-    const { loginUser, googleLogin } = useContext(AuthContext)
+    const { loginUser, googleLogin, githubLogin } = useContext(AuthContext)
 
 
     const onSubmit = (data) => {
@@ -39,9 +39,27 @@ const Login = () => {
 
     }
 
-    
+
     const handleGoogleLogin = () => {
         googleLogin()
+            .then(() => {
+                Swal.fire(
+                    'Good job!',
+                    'Login Successful!',
+                    'success'
+                )
+            })
+            .catch(error => {
+                Swal.fire({
+                    title: error.message,
+                    text: 'Do you want to continue',
+                    icon: 'error',
+                    confirmButtonText: 'Cool'
+                })
+            })
+    }
+    const handleGithubLogin = () => {
+        githubLogin()
             .then(() => {
                 Swal.fire(
                     'Good job!',
@@ -94,7 +112,10 @@ const Login = () => {
                         </div>
                         <Link to={'/signUP'}><p className="text-white">New here? <span className="font-bold">Sign Up</span></p></Link>
                     </form>
-                    <button onClick={handleGoogleLogin} className="btn btn-outline mt-4 text-white"><FaGooglePlusG className="text-2xl"></FaGooglePlusG> google</button>
+                    <div className="flex gap-5">
+                        <button onClick={handleGoogleLogin} className="btn btn-outline mt-4 text-white"><FaGooglePlusG className="text-2xl"></FaGooglePlusG> google</button>
+                        <button onClick={handleGithubLogin} className="btn btn-outline mt-4 text-white"><FaGithub className="text-2xl"></FaGithub> Github</button>
+                    </div>
                 </div>
             </div>
         </div>
