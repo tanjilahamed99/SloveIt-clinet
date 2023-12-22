@@ -2,6 +2,7 @@ import Swal from "sweetalert2";
 import useAllTask from "../../../Hooks/AllTask/useAllTask";
 import useAXiosPublic from "../../../Hooks/AxiosPublic/useAXiosPublic";
 import SectionTittle from "../../../Shared/SectionTittle";
+import { Link } from "react-router-dom";
 
 const Task = () => {
     const axiosPublic = useAXiosPublic()
@@ -75,6 +76,9 @@ const Task = () => {
         <div className="pb-20">
             <SectionTittle subTittle={"Task"} tittle={"All Task"}></SectionTittle>
             <div className="grid  gap-10 ">
+                <Link to={'/dashboard/addTask'}>
+                    <button className="text-left btn btn-accent w-fit text-white">Add new task</button>
+                </Link>
                 <div className="border-2 ">
                     <h2 className="bg-slate-100 text-2xl text-center">To do</h2>
 
