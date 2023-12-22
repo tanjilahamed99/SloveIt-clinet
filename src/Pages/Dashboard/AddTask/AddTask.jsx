@@ -4,7 +4,7 @@ import useAXiosPublic from "../../../Hooks/AxiosPublic/useAXiosPublic";
 import Swal from "sweetalert2";
 
 const AddTask = () => {
-    const { register, handleSubmit,reset } = useForm()
+    const { register, handleSubmit, reset } = useForm()
     const axiosPublic = useAXiosPublic()
 
     const onSubmit = (data) => {
@@ -12,7 +12,9 @@ const AddTask = () => {
             tittle: data.tittle,
             desc: data.desc,
             deadline: data.deadline,
-            priority: data.priority
+            priority: data.priority,
+            ongoing: false,
+            completed: false
         }
 
         axiosPublic.post('/task', newTask)
