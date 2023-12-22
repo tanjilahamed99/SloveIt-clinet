@@ -1,4 +1,5 @@
 import Banner from "../../Components/Banner/Banner";
+import NewsLatter from "./NewsLatter/NewsLatter";
 import Used from "./Used/Used";
 
 const Home = () => {
@@ -6,6 +7,7 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <Used></Used>
+            <NewsLatter></NewsLatter>
         </div>
     );
 };

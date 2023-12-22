@@ -26,7 +26,7 @@ const Navbar = () => {
                     isPending ? "pending" : isActive ? "" : ""
                 }
             >
-                Home
+                About
             </NavLink>
         </li>
         <li>
@@ -36,7 +36,7 @@ const Navbar = () => {
                     isPending ? "pending" : isActive ? "" : ""
                 }
             >
-                Home
+                Contact
             </NavLink>
         </li>
     </>
