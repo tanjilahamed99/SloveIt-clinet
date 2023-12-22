@@ -6,12 +6,15 @@ const Dashboard = () => {
     const { user } = useContext(AuthContext)
 
     const ulLinks = <>
-        <div className="avatar">
-            <div className="w-24 rounded-full">
-                <img src={user?.photoURL} />
+        <div className="mb-5">
+            <div className="avatar">
+                <div className="w-24 rounded-full">
+                    <img src={user?.photoURL} />
+                </div>
             </div>
+            <h2 className="text-md font-bold">{user.displayName}</h2>
+            <h2 className="text-sm font-bold">{user.email}</h2>
         </div>
-        <h2 className="text-sm font-bold">{user.email}</h2>
         <li>
             <NavLink
                 to="/dashboard/addTask"

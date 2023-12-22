@@ -79,7 +79,7 @@ const Task = () => {
                 <Link to={'/dashboard/addTask'}>
                     <button className="text-left btn btn-sm btn-accent w-fit text-white">Add new task</button>
                 </Link>
-                <div className="border-2">
+                <div className="border-2 rounded-xl">
                     <h2 className="bg-slate-100 text-2xl text-center">To do</h2>
 
                     <div className="p-3 bg-slate-50 space-y-3">
@@ -113,7 +113,7 @@ const Task = () => {
                         }
                     </div>
                 </div>
-                <div className="border-2">
+                <div className="border-2 rounded-xl">
                     <h2 className="bg-slate-100 text-2xl text-center">Ongoing</h2>
                     <div className="p-3 bg-slate-50 space-y-3">
                         {
@@ -140,7 +140,7 @@ const Task = () => {
                         }
                     </div>
                 </div>
-                <div className="border-2">
+                <div className="border-2 rounded-xl">
                     <h2 className="bg-slate-100 text-2xl text-center">Completed</h2>
                     <div className="p-3 bg-slate-50 space-y-3">
                         {
