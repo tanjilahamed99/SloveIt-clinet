@@ -8,6 +8,7 @@ import AddTask from "../Pages/Dashboard/AddTask/AddTask";
 import Task from "../Pages/Dashboard/Task/Task";
 import PrivateRoute from "./PrivateRoute";
 import UpdateTask from "../Pages/Dashboard/UpdateTask/UpdateTask";
+import About from "../Pages/About/About";
 
 const Router = createBrowserRouter([
     {
@@ -25,6 +26,10 @@ const Router = createBrowserRouter([
             {
                 path: '/signUp',
                 element: <SignUP></SignUP>
+            },
+            {
+                path: '/about',
+                element: <About></About>
             },
         ]
     },
