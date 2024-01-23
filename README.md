@@ -2,9 +2,9 @@ Its a Task Management website . All the feature mention on website main part
 
 ## link
 
-live link :https://solvedit-9fee9.web.app
-github-client-link :https://github.com/tanjilahamed99/SloveIt-clinet
-github-client-link :https://github.com/tanjilahamed99/solvedIt-server
+- live link :https://solvedit-9fee9.web.app
+- github-client-link :https://github.com/tanjilahamed99/SloveIt-clinet
+- github-client-link :https://github.com/tanjilahamed99/solvedIt-server
 
 
 ## website main part
