@@ -1,7 +1,7 @@
 import { FaArrowRight } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import useAXiosPublic from "../../../Hooks/AxiosPublic/UseAxiosPublic";
+import useAXiosPublic from "../../../Hooks/AxiosPublic/useAXiosPublic";
 
 const NewsLatter = () => {
 
@@ -42,9 +42,9 @@ const NewsLatter = () => {
             <div className="hero-overlay bg-opacity-80"></div>
             <div className="hero-content w-full text-center text-neutral-content">
                 <div className="w-[60%] mx-auto">
-                    <h1 className="mb-5 text-3xl font-medium">Sing up to our newsletter for all the latest news</h1>
+                    <h1 className="mb-5 md:text-3xl text-xl font-medium">Sing up to our newsletter for all the latest news</h1>
                     <form onSubmit={handleSubmit(onSubmit)} className="flex justify-center items-center">
-                        <input {...register("email")} placeholder="E-mail Address" className=" w-1/2 py-3 focus:border-none pl-2 text-white border-b-2 border-white bg-black bg-opacity-10" type="email" />
+                        <input {...register("email")} placeholder="E-mail Address" className=" md:w-1/2 py-3 focus:border-none pl-2 text-white border-b-2 border-white bg-black bg-opacity-10" type="email" />
                         <button type="submit"><FaArrowRight className="text-white text-xl -ml-4"></FaArrowRight></button>
                     </form>
                 </div>
