@@ -29,16 +29,9 @@ const Navbar = () => {
                 About
             </NavLink>
         </li>
-        <li>
-            <NavLink
-                to="/"
-                className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? "" : ""
-                }
-            >
-                Contact
-            </NavLink>
-        </li>
+        {
+            user && <li><Link to={'/dashboard'}>Dashboard</Link></li>
+        }
     </>
 
 
@@ -83,7 +76,7 @@ const Navbar = () => {
                     user ? <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
-                                <img  src={user?.photoURL} />
+                                <img src={user?.photoURL} />
                             </div>
                         </div>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
@@ -94,7 +87,6 @@ const Navbar = () => {
                                     }
                                 </a>
                             </li>
-                            <li><Link to={'/dashboard'}>Dashboard</Link></li>
                             <li onClick={handleLogOut}><a>Logout</a></li>
                         </ul>
                     </div> : <Link to={'/login'}>
